@@ -9,12 +9,39 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.2.3",
+    "@emotion/cache": "11.10.8",
+    "@emotion/react": "11.10.8",
+    "@emotion/server": "11.10.0",
+    "@emotion/styled": "11.10.8",
+    "@iconify/react": "4.1.0",
+    "@mui/lab": "5.0.0-alpha.128",
+    "@mui/material": "5.12.2",
+    "@mui/system": "5.12.1",
+    "@prisma/client": "^5.16.2",
+    "axios": "^1.4.0",
+    "next": "14.2.5",
+    "prisma": "^5.16.2",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.5"
+    "react-hot-toast": "^2.4.1",
+    "svix": "^1.25.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "@iconify/iconify": "3.1.0",
+    "@iconify/json": "2.2.58",
+    "@iconify/tools": "2.2.6",
+    "@iconify/types": "2.0.0",
+    "@iconify/utils": "2.1.5",
+    "@types/node": "20.14.10",
+    "@types/react": "18.3.3",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.3.2",
+    "eslint-config-prettier": "8.7.0",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-import-resolver-typescript": "3.5.3",
+    "eslint-plugin-import": "2.27.5",
+    "prettier": "2.8.4"
   }
 }

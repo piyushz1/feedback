@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:Piyush%40123@localhost:5433/postgres"
+}
+
+model User {
+  id          String    @id @default(cuid())
+  name        String?
+  email       String    @unique
+  createdAt   DateTime  @default(now()) @map(name: "created_at")
+  updatedAt   DateTime  @updatedAt @map(name: "updated_at")
+  lastLoginAt DateTime?
+
+  boards    Board[]    @relation(name: "BoardCreatedByUser")
+  feedbacks Feedback[] @relation(name: "FeedbackCreatedByUser")
+  upvotes   Upvote[]   @relation(name: "UpvotesByUser")
+}
+
+model Board {
+  id        String   @id @default(cuid())
+  title     String   @unique
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], name: "BoardCreatedByUser")
+
+  feedbacks Feedback[] @relation(name: "FeedbackOnBoard")
+}
+
+model Feedback {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id], name: "FeedbackCreatedByUser")
+  boardId     String
+  board       Board    @relation(fields: [boardId], references: [id], name: "FeedbackOnBoard", onDelete: Cascade)
+
+  upvotes Upvote[] @relation(name: "UpvotesOnFeedback")
+}
+
+model Upvote {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now()) @map(name: "created_at")
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], name: "UpvotesByUser")
+  feedbackId String
+  feedback   Feedback @relation(fields: [feedbackId], references: [id], name: "UpvotesOnFeedback", onDelete: Cascade)
+}
