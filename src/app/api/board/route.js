@@ -2,6 +2,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export async function GET(req) {
+  return new Response(JSON.stringify({ message: "Board Deleted" }), {
+    status: 200,
+  });
+}
 export async function DELETE(req, res) {
   const searchParams = req.nextUrl.searchParams;
 
