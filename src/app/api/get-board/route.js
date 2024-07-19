@@ -25,7 +25,9 @@ export async function GET(req) {
     });
 
     return new Response(JSON.stringify(boards), { status: 200 });
+
   } catch (error) {
+    console.log('error: ', error);
     return new Response(JSON.stringify({ message: "Server Error!" }), {
       status: 500,
     });
