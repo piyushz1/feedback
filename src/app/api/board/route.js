@@ -1,6 +1,6 @@
-// import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
-// const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
 export async function GET(req) {
   return new Response(JSON.stringify({ message: "Board Deleted" }), {
